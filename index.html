@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Experience | Deloitte - Business Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deloitte-green: #86BC25;
+            --deloitte-dark: #000000;
+            --deloitte-deep-green: #00563F;
+            --accent-light: #e8f5d4;
+            --accent-lighter: #f4fae8;
+            --bg-light: #fafbfc;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --shadow-green: 0 8px 30px rgba(134,188,37,0.2);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ══════════ ANIMATIONS ══════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.3); }
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes count-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* ══════════ NAVIGATION ══════════ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0 40px;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--deloitte-green);
+        }
+        .navbar.scrolled {
+            padding: 0 40px;
+            box-shadow: var(--shadow-lg);
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-logo img {
+            height: 22px;
+            filter: brightness(0) invert(1);
+        }
+        .nav-logo span {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--deloitte-green);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--deloitte-green); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ══════════ HERO ══════════ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000 0%, #111 40%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(134,188,37,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(134,188,37,0.05) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(0,86,63,0.06) 0%, transparent 40%);
+        }
+        .hero-green-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--deloitte-green));
+        }
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(134,188,37,0.1);
+            border: 1px solid rgba(134,188,37,0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: var(--deloitte-green);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        .hero-badge .dot {
+            width: 8px; height: 8px;
+            background: var(--deloitte-green);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .hero h1 .green { color: var(--deloitte-green); }
+        .hero-subtitle {
+            font-size: 20px;
+            color: #888;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-meta-item {
+            text-align: center;
+        }
+        .hero-meta-item .label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        .hero-meta-item .value {
+            font-size: 16px;
+            color: white;
+            font-weight: 600;
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: float 3s infinite;
+        }
+        .scroll-arrow {
+            width: 24px; height: 24px;
+            border-right: 2px solid var(--deloitte-green);
+            border-bottom: 2px solid var(--deloitte-green);
+            transform: rotate(45deg);
+        }
+
+        /* ══════════ SECTION BASE ══════════ */
+        .section {
+            padding: 100px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--deloitte-green);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        .section-label::before, .section-label::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--deloitte-green);
+        }
+        .section-title {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ══════════ COMPANY SECTION ══════════ */
+        .company-section {
+            background: white;
+            border-top: 4px solid var(--deloitte-green);
+        }
+        .company-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+        .company-left {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .company-logo-container {
+            width: 160px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        .company-logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            filter: brightness(0) invert(1);
+        }
+        .company-tagline {
+            color: #888;
+            font-size: 13px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .company-right {
+            padding: 50px 40px;
+        }
+        .company-right h3 {
+            font-size: 22px;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        .company-right p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .company-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .company-stat {
+            background: var(--accent-lighter);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid rgba(134,188,37,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .company-stat:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-green);
+        }
+        .company-stat .stat-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .company-stat .stat-value {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--deloitte-deep-green);
+        }
+        .company-stat .stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+
+        /* ══════════ MISSIONS ══════════ */
+        .missions-section {
+            background: var(--bg-light);
+        }
+        .missions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .mission-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 35px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #eee;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--deloitte-green), var(--deloitte-deep-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .mission-card:hover::before { transform: scaleX(1); }
+        .mission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(134,188,37,0.3);
+        }
+        .mission-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--deloitte-green), var(--deloitte-deep-green));
+            border-radius: 12px;
+            color: white;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+        .mission-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        .mission-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .mission-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 15px;
+        }
+        .mission-tag {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 50px;
+            background: var(--accent-lighter);
+            color: var(--deloitte-deep-green);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* ══════════ SKILLS ══════════ */
+        .skills-section {
+            background: white;
+        }
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .skills-block h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .skills-block h3 .icon-circle {
+            width: 32px; height: 32px;
+            background: var(--deloitte-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        .skill-row {
+            margin-bottom: 22px;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .skill-info .name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .skill-info .percent {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--deloitte-green);
+        }
+        .skill-bar-bg {
+            height: 10px;
+            background: #eef2e5;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--deloitte-deep-green), var(--deloitte-green));
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .soft-skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .soft-chip {
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 2px solid #e0e0e0;
+            color: var(--text-primary);
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .soft-chip:hover {
+            border-color: var(--deloitte-green);
+            background: var(--accent-lighter);
+            color: var(--deloitte-deep-green);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-green);
+        }
+
+        /* ══════════ TIMELINE ══════════ */
+        .timeline-section {
+            background: linear-gradient(135deg, #000 0%, #111 100%);
+            color: white;
+        }
+        .timeline-section .section-title { color: white; }
+        .timeline-section .section-subtitle { color: #888; }
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--deloitte-green), transparent);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+            padding-right: calc(50% + 30px);
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+            padding-left: calc(50% + 30px);
+            text-align: left;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px; height: 16px;
+            background: var(--deloitte-green);
+            border-radius: 50%;
+            border: 3px solid #000;
+            z-index: 2;
+        }
+        .timeline-content {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .timeline-content:hover {
+            background: rgba(134,188,37,0.08);
+            border-color: rgba(134,188,37,0.3);
+        }
+        .timeline-content .period {
+            font-size: 12px;
+            color: var(--deloitte-green);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .timeline-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .timeline-content p {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* ══════════ FEEDBACK / TAKEAWAYS ══════════ */
+        .feedback-section {
+            background: var(--bg-light);
+        }
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .feedback-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #eee;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .feedback-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--deloitte-green);
+            transition: width 0.4s ease;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        }
+        .feedback-card:hover::after { width: 80%; }
+        .feedback-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .feedback-icon-circle {
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, var(--deloitte-green), var(--deloitte-deep-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+        .feedback-card:hover .feedback-icon-circle {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .feedback-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        .feedback-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ══════════ TOOLS SECTION ══════════ */
+        .tools-section {
+            background: white;
+        }
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .tool-item {
+            background: var(--bg-light);
+            border: 1px solid #eee;
+            border-radius: var(--radius-md);
+            padding: 25px 30px;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.3s ease;
+        }
+        .tool-item:hover {
+            border-color: var(--deloitte-green);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-green);
+        }
+        .tool-item .tool-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .tool-item .tool-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* ══════════ QUOTE ══════════ */
+        .quote-section {
+            background: linear-gradient(135deg, var(--deloitte-deep-green), #003d2e);
+            padding: 80px 40px;
+            text-align: center;
+        }
+        .quote-text {
+            font-size: 26px;
+            font-weight: 300;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        .quote-author {
+            color: var(--deloitte-green);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* ══════════ FOOTER ══════════ */
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 40px 30px;
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand img {
+            height: 24px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 15px;
+        }
+        .footer-brand p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--deloitte-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .footer-col a, .footer-col p {
+            display: block;
+            color: #888;
+            font-size: 13px;
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: var(--deloitte-green); }
+        .footer-bottom {
+            border-top: 1px solid #222;
+            padding-top: 25px;
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .footer-bottom p {
+            color: #555;
+            font-size: 12px;
+        }
+
+        /* ══════════ BACK TO TOP ══════════ */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px; height: 48px;
+            background: var(--deloitte-green);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-green);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--deloitte-deep-green);
+            transform: translateY(-3px);
+        }
+
+        /* ══════════ RESPONSIVE ══════════ */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .company-card { grid-template-columns: 1fr; }
+            .missions-grid { grid-template-columns: 1fr; }
+            .skills-layout { grid-template-columns: 1fr; }
+            .feedback-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0 0 40px;
+                text-align: left;
+                flex-direction: row;
+            }
+            .timeline::before { left: 10px; }
+            .timeline-dot { left: 10px; }
+            .nav-links { display: none; }
+            .hero-meta { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <img src="https://brandslogos.com/wp-content/uploads/thumbs/deloitte-logo-vector.svg"
+     alt="Deloitte"
+     style="height:60px;">
+                <span>Internship 2026</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#company">Company</a></li>
+                <li><a href="#missions">Missions</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#takeaways">Takeaways</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-green-line"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Internship Experience
+            </div>
+            <h1>Business Valuation<br>at <span class="green">Deloitte</span></h1>
+            <p class="hero-subtitle">A transformative professional experience in financial advisory,<br>delivering valuation solutions for global clients.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <div class="label">Intern</div>
+                    <div class="value">Laith Lasram</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="label">Position</div>
+                    <div class="value">Business Valuation Intern</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="label">Department</div>
+                    <div class="value">Financial Advisory</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="label">Duration</div>
+                    <div class="value">December — March 2026</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            Scroll
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- COMPANY -->
+    <section class="section company-section" id="company">
+        <div class="section-header reveal">
+            <div class="section-label">About</div>
+            <h2 class="section-title">The Company</h2>
+            <p class="section-subtitle">A global leader in professional services, making an impact that matters.</p>
+        </div>
+        <div class="company-card reveal">
+            <div class="company-left">
+                <div class="company-logo-container">
+                    <div class="company-logo-container">
+    <img src="https://brandslogos.com/wp-content/uploads/thumbs/deloitte-logo-vector.svg"
+         alt="Deloitte Logo"
+         style="width:160%; max-width:180px;">
+</div>
+                </div>
+                <p class="company-tagline">"Making an impact that matters for our clients, our people, and our communities."</p>
+            </div>
+            <div class="company-right">
+                <h3>Deloitte — Financial Advisory</h3>
+                <p>Deloitte is one of the Big Four accounting and professional services firms, providing audit & assurance, consulting, financial advisory, risk advisory, and tax services. The Financial Advisory practice helps clients navigate complex transactions, crises, and transformations with confidence, including mergers & acquisitions, forensic investigations, and business valuations.</p>
+                <div class="company-stats-grid">
+                    <div class="company-stat">
+                        <div class="stat-icon">🌍</div>
+                        <div class="stat-value">150+</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="company-stat">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-value">457K+</div>
+                        <div class="stat-label">Professionals</div>
+                    </div>
+                    <div class="company-stat">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value">$65B+</div>
+                        <div class="stat-label">Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSIONS -->
+    <section class="section missions-section" id="missions">
+        <div class="section-header reveal">
+            <div class="section-label">Assignments</div>
+            <h2 class="section-title">My Missions</h2>
+            <p class="section-subtitle">Core responsibilities and projects undertaken during the internship.</p>
+        </div>
+        <div class="missions-grid">
+            <div class="mission-card reveal" style="transition-delay: 0.1s">
+                <div class="mission-number">01</div>
+                <h3>Financial Analysis & Due Diligence</h3>
+                <p>Conducted comprehensive financial statement analysis, performed due diligence reviews, and assessed financial health of target companies for M&A advisory engagements.</p>
+                <div class="mission-tags">
+                    <span class="mission-tag">Due Diligence</span>
+                    <span class="mission-tag">Financial Statements</span>
+                    <span class="mission-tag">M&A</span>
+                </div>
+            </div>
+            <div class="mission-card reveal" style="transition-delay: 0.2s">
+                <div class="mission-number">02</div>
+                <h3>Valuation Modeling</h3>
+                <p>Built and maintained DCF models, comparable company analyses, and precedent transaction analyses to determine fair market value for client engagements and regulatory reporting.</p>
+                <div class="mission-tags">
+                    <span class="mission-tag">DCF</span>
+                    <span class="mission-tag">Comps Analysis</span>
+                    <span class="mission-tag">Precedent Transactions</span>
+                </div>
+            </div>
+            <div class="mission-card reveal" style="transition-delay: 0.3s">
+                <div class="mission-number">03</div>
+                <h3>Client Deliverables & Reporting</h3>
+                <p>Prepared professional valuation reports, executive summaries, and presentation decks for senior stakeholders, regulatory filings, and board-level meetings.</p>
+                <div class="mission-tags">
+                    <span class="mission-tag">Reports</span>
+                    <span class="mission-tag">Presentations</span>
+                    <span class="mission-tag">Client Meetings</span>
+                </div>
+            </div>
+            <div class="mission-card reveal" style="transition-delay: 0.4s">
+                <div class="mission-number">04</div>
+                <h3>Industry Research & Documentation</h3>
+                <p>Conducted sector-specific market research, maintained working paper documentation, and ensured compliance with international valuation standards (IFRS, IVS).</p>
+                <div class="mission-tags">
+                    <span class="mission-tag">Market Research</span>
+                    <span class="mission-tag">IFRS</span>
+                    <span class="mission-tag">Compliance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills-section" id="skills">
+        <div class="section-header reveal">
+            <div class="section-label">Competencies</div>
+            <h2 class="section-title">Skills Mobilized</h2>
+            <p class="section-subtitle">Technical expertise and soft skills developed throughout the experience.</p>
+        </div>
+        <div class="skills-layout">
+            <div class="skills-block reveal-left">
+                <h3><span class="icon-circle">⚙</span> Technical Skills</h3>
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span class="name">Financial Modeling</span>
+                        <span class="percent">90%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span class="name">Valuation Techniques (DCF, Comps)</span>
+                        <span class="percent">85%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span class="name">Excel & Financial Tools</span>
+                        <span class="percent">95%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="95%"></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span class="name">Financial Analysis & Reporting</span>
+                        <span class="percent">88%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="88%"></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info">
+                        <span class="name">PowerPoint & Presentations</span>
+                        <span class="percent">85%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="85%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-block reveal-right">
+                <h3><span class="icon-circle">💡</span> Soft Skills</h3>
+                <div class="soft-skills-grid">
+                    <div class="soft-chip">🤝 Teamwork</div>
+                    <div class="soft-chip">🔄 Adaptability</div>
+                    <div class="soft-chip">🎯 Attention to Detail</div>
+                    <div class="soft-chip">🗣️ Communication</div>
+                    <div class="soft-chip">🧠 Analytical Thinking</div>
+                    <div class="soft-chip">⏰ Time Management</div>
+                    <div class="soft-chip">🚀 Initiative</div>
+                    <div class="soft-chip">📋 Organization</div>
+                    <div class="soft-chip">💪 Resilience</div>
+                    <div class="soft-chip">🔍 Problem Solving</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section tools-section" id="tools">
+        <div class="section-header reveal">
+            <div class="section-label">Environment</div>
+            <h2 class="section-title">Tools & Software</h2>
+            <p class="section-subtitle">Key tools used daily during the internship.</p>
+        </div>
+        <div class="tools-grid reveal">
+            <div class="tool-item"><div class="tool-icon">📊</div><div class="tool-name">Excel</div></div>
+            <div class="tool-item"><div class="tool-icon">📈</div><div class="tool-name">Bloomberg</div></div>
+            <div class="tool-item"><div class="tool-icon">📑</div><div class="tool-name">PowerPoint</div></div>
+            <div class="tool-item"><div class="tool-icon">💹</div><div class="tool-name">Capital IQ</div></div>
+            <div class="tool-item"><div class="tool-icon">📄</div><div class="tool-name">Word</div></div>
+            <div class="tool-item"><div class="tool-icon">🗂️</div><div class="tool-name">SharePoint</div></div>
+            <div class="tool-item"><div class="tool-icon">💬</div><div class="tool-name">Teams</div></div>
+            <div class="tool-item"><div class="tool-icon">📉</div><div class="tool-name">FactSet</div></div>
+        </div>
+    </section>
+
+    <!-- TIMELINE / JOURNEY -->
+    <section class="section timeline-section" id="journey">
+        <div class="section-header reveal">
+            <div class="section-label">Timeline</div>
+            <h2 class="section-title">My Journey</h2>
+            <p class="section-subtitle">Key milestones and phases of my internship at Deloitte.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="period">Week 1–2</div>
+                    <h4>Onboarding & Integration</h4>
+                    <p>Completed Deloitte onboarding, met the team, got introduced to internal tools and valuation methodologies.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="period">Week 3–5</div>
+                    <h4>First Client Engagements</h4>
+                    <p>Began contributing to active valuation projects, building financial models and conducting market research.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="period">Week 6–9</div>
+                    <h4>Deep Involvement</h4>
+                    <p>Led research streams, prepared client deliverables independently, and presented findings to senior managers.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+        <div class="period">Week 9+</div>
+        <h4>Ongoing & Continuing</h4>
+        <p>Currently deepening involvement in active valuation engagements, taking on greater responsibilities, and continuing to develop expertise in financial advisory.</p>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section reveal-scale">
+        <p class="quote-text">"This internship at Deloitte gave me the confidence, skills, and professional network to launch my career in financial advisory with clarity and purpose."</p>
+        <p class="quote-author">— Laith lasram, Business Valuation Intern</p>
+    </section>
+
+    <!-- KEY TAKEAWAYS -->
+    <section class="section feedback-section" id="takeaways">
+        <div class="section-header reveal">
+            <div class="section-label">Reflection</div>
+            <h2 class="section-title">Key Takeaways</h2>
+            <p class="section-subtitle">What this professional experience brought me.</p>
+        </div>
+        <div class="feedback-grid">
+            <div class="feedback-card reveal" style="transition-delay: 0.1s">
+                <div class="feedback-icon-circle">🎓</div>
+                <h3>Professional Development</h3>
+                <p>Gained hands-on expertise in business valuation methodologies, financial modeling, and professional services delivery within a Big Four environment. Learned to work under pressure with high-quality standards.</p>
+            </div>
+            <div class="feedback-card reveal" style="transition-delay: 0.2s">
+                <div class="feedback-icon-circle">🚀</div>
+                <h3>Personal Growth</h3>
+                <p>Strengthened communication and interpersonal skills, built confidence in client-facing situations, and developed a structured, analytical approach to complex financial problems.</p>
+            </div>
+            <div class="feedback-card reveal" style="transition-delay: 0.3s">
+                <div class="feedback-icon-circle">🎯</div>
+                <h3>Future Perspectives</h3>
+                <p>Confirmed my career interest in financial advisory and corporate valuation. Built a valuable professional network and gained clear insight into the consulting industry's dynamics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="https://brandslogos.com/wp-content/uploads/thumbs/deloitte-logo-vector.svg"
+     alt="Deloitte"
+     style="height:60px;">
+                <p>One Page Poster — Internship Experience<br>Business Valuation Department<br>Financial Advisory Services</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:llasram@deloitte.tn">📧 llasram@deloitte.tn</a>
+                <a href="#">💼 www.linkedin.com/in/laith-lasram</a>
+                <a href="#">📱 +33 6 03 83 81 83</a>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#company">The Company</a>
+                <a href="#missions">My Missions</a>
+                <a href="#skills">Skills</a>
+                <a href="#takeaways">Key Takeaways</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 — Internship One Page Poster | Designed with care for academic submission</p>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <script>
+        // Scroll Reveal
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            const windowHeight = window.innerHeight;
+            elements.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // Skill Bars Animation
+        function animateSkillBars() {
+            document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    bar.style.width = bar.dataset.width;
+                }
+            });
+        }
+
+        // Navbar scroll effect
+        function handleNavbar() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        }
+
+        // Back to top
+        function handleBackToTop() {
+            const btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.scrollY > 400);
+        }
+
+        // Events
+        window.addEventListener('scroll', () => {
+            revealOnScroll();
+            animateSkillBars();
+            handleNavbar();
+            handleBackToTop();
+        });
+
+        // Initial trigger
+        window.addEventListener('load', () => {
+            revealOnScroll();
+            animateSkillBars();
+        });
+    </script>
+
+</body>
+</html>
